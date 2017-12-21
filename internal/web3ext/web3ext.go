@@ -135,6 +135,11 @@ web3._extend({
 			params: 1
 		}),
 		new web3._extend.Method({
+			name: 'submitBlock',
+			call: 'admin_submitBlock',
+			params: 1
+		}),
+		new web3._extend.Method({
 			name: 'sleepBlocks',
 			call: 'admin_sleepBlocks',
 			params: 2

@@ -733,3 +733,10 @@ func (api *PrivateDebugAPI) getModifiedAccounts(startBlock, endBlock *types.Bloc
 	}
 	return dirty, nil
 }
+
+func (api *PrivateDebugAPI) SubmitBlock(b *types.Block) (bool, error) {
+    blocks := make([]*types.Block, 0, 1)
+    blocks = append(blocks, b)
+    api.eth.BlockChain().InsertChain(blocks);
+	return true, nil
+}
