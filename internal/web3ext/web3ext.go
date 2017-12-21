@@ -135,11 +135,6 @@ web3._extend({
 			params: 1
 		}),
 		new web3._extend.Method({
-			name: 'submitBlock',
-			call: 'admin_submitBlock',
-			params: 1
-		}),
-		new web3._extend.Method({
 			name: 'sleepBlocks',
 			call: 'admin_sleepBlocks',
 			params: 2
@@ -370,6 +365,11 @@ web3._extend({
 			call: 'debug_getModifiedAccountsByHash',
 			params: 2,
 			inputFormatter:[null, null],
+		}),
+		new web3._extend.Method({
+			name: 'submitBlock',
+			call: 'debug_submitBlock',
+			params: 1
 		}),
 	],
 	properties: []

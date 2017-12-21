@@ -734,9 +734,14 @@ func (api *PrivateDebugAPI) getModifiedAccounts(startBlock, endBlock *types.Bloc
 	return dirty, nil
 }
 
-func (api *PrivateDebugAPI) SubmitBlock(b *types.Block) (bool, error) {
+func (api *PrivateDebugAPI) SubmitBlock(b hexutil.Bytes) (bool, error) {
+    blk := new(types.Block)
+    if err := rlp.DecodeBytes(b, blk); err != nil {
+        return false, err
+    }
+
     blocks := make([]*types.Block, 0, 1)
-    blocks = append(blocks, b)
+    blocks = append(blocks, blk)
     api.eth.BlockChain().InsertChain(blocks);
 	return true, nil
 }
